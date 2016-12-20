@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
+    <title>Upload Pictures</title>
+</head>
+<body>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="upload">
+    <input type="submit" value="Submit text">
+</form>
+</body>
+<script>
+    'use strict';
+    function request(url) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                console.log(xmlhttp.responseText);
+                document.getElementById('resText').innerHTML = xmlhttp.responseText;
+            }
+        };
+        xmlhttp.onerror = function (e) {
+            console.error(e);
+        };
+        xmlhttp.open('GET', url, true);
+        xmlhttp.send();
+    }
+</script>
+</html>
